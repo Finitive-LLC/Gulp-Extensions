@@ -8,7 +8,6 @@ const postcss = require('gulp-postcss');
 const sourcemaps = require('gulp-sourcemaps');
 const autoprefixer = require('autoprefixer');
 const del = require('del');
-const stylelint = require('gulp-stylelint');
 
 const defaultCompatibleBrowsers = [
     'last 1 Chrome version',
@@ -24,11 +23,6 @@ function compile(source, destination, compatibleBrowsers) {
     return gulp.src(source + '**/*.scss')
         .pipe(cache('scss'))
         .pipe(plumber())
-        .pipe(stylelint({
-            reporters: [
-                { formatter: 'verbose', console: true },
-            ],
-        }))
         .pipe(sourcemaps.init({ loadMaps: true }))
         .pipe(sass({ linefeed: 'crlf' }).on('error', sass.logError))
         .pipe(postcss([autoprefixer({ overrideBrowserslist: compileCompatibleBrowsers })]))
@@ -59,5 +53,5 @@ function build(source, destination, compatibleBrowsers) {
 }
 
 module.exports = {
-    build, compile, minify, clean,
+    build, compile, minify, clean
 };
