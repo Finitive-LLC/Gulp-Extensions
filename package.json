@@ -32,10 +32,5 @@
     "postcss-scss": "^4.0.1",
     "stylelint": "^14.0.1",
     "stylelint-config-standard-scss": "^2.0.0"
-  },
-  "pnpm": {
-    "overrides": {
-      "sass": "1.43.4"
-    }
   }
 }
